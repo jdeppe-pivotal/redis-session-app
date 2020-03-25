@@ -26,7 +26,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				// .antMatchers("/", "/home").permitAll()
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
@@ -46,15 +45,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.roles("USER");
 	}
 
-	// @Bean
-	// @Override
-	// public UserDetailsService userDetailsService() {
-	// 	UserDetails user = User.withDefaultPasswordEncoder()
-	// 			.username("user")
-	// 			.password("{noop}password")
-	// 			.roles("USER")
-	// 			.build();
-	//
-	// 	return new InMemoryUserDetailsManager(user);
-	// }
 }

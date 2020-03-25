@@ -17,6 +17,6 @@ public class SetValueController {
     if (!ObjectUtils.isEmpty(key) && !ObjectUtils.isEmpty(value)) {
       request.getSession().setAttribute(key, value);
     }
-    return "hello";
+    return "setValue";
   }
 }
