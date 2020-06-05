@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class SetValueController {
+public class ValueController {
 
   @RequestMapping(value = "/setValue", method = RequestMethod.POST)
   public String setValue(@RequestParam(name = "key", required = false) String key,
@@ -18,6 +18,17 @@ public class SetValueController {
     if (!ObjectUtils.isEmpty(key) && !ObjectUtils.isEmpty(value)) {
       request.getSession().setAttribute(key, value);
     }
+
+    return "setValue";
+  }
+
+  @RequestMapping(value = "/delete", method = RequestMethod.POST)
+  public String delete(@RequestParam(name = "key", required = false) String key,
+                         HttpServletRequest request) {
+    if (!ObjectUtils.isEmpty(key)) {
+      request.getSession().removeAttribute(key);
+    }
+
     return "setValue";
   }
 }
